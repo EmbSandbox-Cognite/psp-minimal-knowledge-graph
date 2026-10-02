@@ -25,6 +25,10 @@ Each step is a Python SDK write in the same shape an extractor or transformation
 
 To write into a different space, change `SPACE` in `helpers/constants.py` before Setup.
 
+## Extensions
+
+- [`minimal_knowledge_graph_data_model_extension.ipynb`](minimal_knowledge_graph/minimal_knowledge_graph_data_model_extension.ipynb) — extends the CDM with two custom types (`Alarm`, `RoastProfile`) and shows the enterprise/solution data model layering pattern. Requires the main notebook to have been run first (it enriches the `issue_smoke_alarm` activity in place).
+
 ## Configuration
 
 Copy `.env.example` to `.env` and fill in the values:
