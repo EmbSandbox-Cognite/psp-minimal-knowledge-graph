@@ -18,10 +18,10 @@ Each step is a Python SDK write in the same shape an extractor or transformation
    uv sync
    ```
 
-3. Create `.env` from `.env.example` and fill in your project values. See [Configuration](#configuration).
-4. Open `minimal_knowledge_graph/minimal_knowledge_graph.ipynb` and select the `.venv` kernel.
+3. Copy an existing working `.env` file into the repo root, or create one from `.env.example` and fill in your project values. See [Configuration](#configuration).
+4. Using your desktop coding IDE (VS Code, Cursor, etc.), open `minimal_knowledge_graph/minimal_knowledge_graph.ipynb` and select the `.venv` kernel.
 5. Run the cells in order from **Setup** through **Step 7**. After each step, follow that step's **Verify in Fusion** notes.
-6. Leave **Cleanup** unrun until you want the demo removed. `run_cleanup` defaults to `True`, so **Run All** deletes the graph at the end. Set `run_cleanup = False` in that cell before a full run if you want the data to stay.
+6. `run_cleanup` defaults to `False`, so **Run All** leaves the graph in place for you to explore in Fusion. When you want the demo removed, set `run_cleanup = True` in the **Cleanup** cell and run it.
 
 To write into a different space, change `SPACE` in `helpers/constants.py` before Setup.
 

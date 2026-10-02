@@ -13,6 +13,14 @@ dependencies = [
 [dependency-groups]
 dev = [
     "ipykernel>=7.4.0",
-    "pytest>=9.1.1",
+    "pre-commit>=4.4.0",
     "ruff>=0.16.9",
 ]
+
+[tool.ruff]
+line-length = 88
+extend-include = ["*.ipynb"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "C4"]
+ignore = ["E501"]  # line length is the formatter's job

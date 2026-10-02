@@ -18,6 +18,16 @@ from dotenv import load_dotenv
 LOGIN_FLOWS = ("client_credentials", "interactive")
 
 
+def _require_env(name: str) -> str:
+    value = os.environ.get(name)
+    if not value:
+        raise RuntimeError(
+            f"{name} is not set. Copy .env.example to .env and fill it in. "
+            "If you just edited .env, restart the kernel — it is read once per process."
+        )
+    return value
+
+
 def get_client(
     client_name: str = "coffee-roastery-demo",
     api_subversion: str | None = None,
@@ -34,20 +44,18 @@ def get_client(
 
     login_flow = os.environ.get("LOGIN_FLOW", "client_credentials").strip().lower()
     if login_flow not in LOGIN_FLOWS:
-        raise ValueError(
-            f"LOGIN_FLOW must be one of {LOGIN_FLOWS}, got {login_flow!r}"
-        )
+        raise ValueError(f"LOGIN_FLOW must be one of {LOGIN_FLOWS}, got {login_flow!r}")
 
-    cluster = os.environ["CDF_CLUSTER"]
-    project = os.environ["CDF_PROJECT"]
-    client_id = os.environ["IDP_CLIENT_ID"]
-    tenant_id = os.environ["IDP_TENANT_ID"]
+    cluster = _require_env("CDF_CLUSTER")
+    project = _require_env("CDF_PROJECT")
+    client_id = _require_env("IDP_CLIENT_ID")
+    tenant_id = _require_env("IDP_TENANT_ID")
 
     if login_flow == "client_credentials":
         credentials = OAuthClientCredentials.default_for_entra_id(
             tenant_id=tenant_id,
             client_id=client_id,
-            client_secret=os.environ["IDP_CLIENT_SECRET"],
+            client_secret=_require_env("IDP_CLIENT_SECRET"),
             cdf_cluster=cluster,
         )
     else:

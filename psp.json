@@ -2,5 +2,5 @@
     "name": "Minimal Knowledge Graph",
     "description": "Introduction to creating a minimal knowledge graph. Using the Python SDK you will be guided through populating a minimal graph using the Cognite Core Data Model.",
     "type": "notebook",
-    "tags": ["Python SDK", "CDM", "Contextualisation", "Enginering Diagram"]
+    "tags": ["python-sdk", "cdm", "contextualization", "engineering-diagram"]
   }
